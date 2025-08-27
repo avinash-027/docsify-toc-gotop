@@ -1,0 +1,185 @@
+:root {
+  --alt-bg-toc: #fafafa;
+  --alt-color-toc: #364149;
+}
+.toc-wrapper {
+  position: fixed;
+  top: 105px;
+  right: 10px;
+  z-index: 999;
+  width: auto;
+  max-height: 60vh;
+  display: flex;
+  align-items: flex-start;
+}
+
+/* .toc-wrapper:hover .toc-icon {
+  border-bottom-left-radius: 0px;
+} */
+.toc-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--sidebar-border-color, var(--alt-bg-toc));
+  border: 1px solid var(--sidebar-border, rgba(0, 0, 0, 0.07));
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--base-color, var(--alt-color-toc));
+}
+
+/* REMOVE this block:
+.toc-wrapper:hover .docs-toc-nav,
+.docs-toc-nav:hover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+*/
+
+/* NEW: when wrapper has .open, show nav */
+.toc-wrapper.open .docs-toc-nav {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+/* Optional visual feedback when icon is active */
+.toc-wrapper.open .toc-icon {
+  background-color: var(--sidebar-border-color, var(--alt-bg-toc));
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.docs-toc-nav {
+  position: fixed;
+  top: 140px;
+  right: 10px;
+  max-width: 25vw;
+  max-height: 50%;
+  padding: 8px 12px;
+  background-color: var(--sidebar-border-color, var(--alt-bg-toc));
+  border: 1px solid var(--sidebar-border, rgba(0, 0, 0, 0.07));
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  font-size: 14px;
+  color: var(--base-color, var(--alt-color-toc));
+  text-align: left;
+  cursor: pointer;
+  z-index: 999;
+  -ms-overflow-style: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.docs-toc-nav::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* Active item styling */
+.docs-toc-nav .active {
+  color: rgb(11, 135, 218);
+  border-right: 3px solid rgb(11, 135, 218);
+}
+
+/* Style toc links */
+.page_toc div[class^="lv"] a {
+  display: block;
+  font-weight: 500;
+  line-height: 1.8em;
+  color: var(--base-color, var(--alt-color-toc));
+  text-decoration: none;
+  transition: color 0.2s;
+}
+/* Hover styling for toc links */
+.page_toc div[class^="lv"] a:hover {
+  color: rgb(22, 138, 216);
+  white-space: normal;
+}
+/* For links inside ToC, ellipsis for overflow text */
+.page_toc div[class^="lv"] a span {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--sidebar-link, inherit);
+}
+
+/* Color adjustment for active ToC link span */
+.page_toc div.active a span {
+  color: rgb(11, 135, 218);
+}
+
+/* Indent ToC items to signify heading levels */
+.page_toc div.lv2 { text-indent: 10px; }
+.page_toc div.lv3 { text-indent: 25px; }
+.page_toc div.lv4 { text-indent: 35px; }
+.page_toc div.lv5 { text-indent: 45px; }
+.page_toc div.lv6 { text-indent: 65px; }
+
+/* Scrollbar width and thumb styling for webkit browsers */
+.docs-toc-nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.docs-toc-nav::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+/* Responsive styling for screen widths less than 900px */
+@media (max-width: 900px) {
+  .docs-toc-nav {
+    max-width: 49vw;
+    top: auto;
+    bottom: 100px;
+    right: 10px;
+  }
+  .toc-icon {
+    border-bottom-right-radius: 30px;
+  }
+  .toc-wrapper.open .toc-icon {
+    background-color: var(--sidebar-border-color, var(--alt-bg-toc));
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+
+  .toc-wrapper {
+    top: auto;
+    bottom: 65px;
+    right: 10px;
+  }
+}
+/* Styling for the "back to top" button */
+#docs-gotop {
+  max-width: 40px;
+  max-height: 40px;
+  position: fixed;
+  right: 10px;
+  bottom: 20px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 50%;
+  background-color: var(--sidebar-border-color, var(--alt-bg-toc));
+  border: 1px solid var(--sidebar-border, rgba(0, 0, 0, 0.07));
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.175);
+  cursor: pointer;
+  z-index: 999;
+  color: var(--base-color, var(--alt-color-toc));
+  display: none;
+}
+/* Hover effect for "back to top" button */
+#docs-gotop:hover {
+  background-color: var(--base-background-color, var(--alt-bg-toc));
+}
