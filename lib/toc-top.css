@@ -13,6 +13,10 @@
   align-items: flex-start;
 }
 
+a strong {
+  color: inherit;
+}
+
 /* .toc-wrapper:hover .toc-icon {
   border-bottom-left-radius: 0px;
 } */
@@ -180,6 +184,8 @@
   display: none;
 }
 /* Hover effect for "back to top" button */
+/* 
 #docs-gotop:hover {
   background-color: var(--base-background-color, var(--alt-bg-toc));
 }
+*/

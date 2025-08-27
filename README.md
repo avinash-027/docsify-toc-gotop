@@ -15,6 +15,10 @@ A Docsify plugin that adds a dynamic Table of Contents (TOC) sidebar with smooth
 * A "Back to Top" button appears when you scroll down, smoothly returning you to the top of the page.
 * A responsive, collapsible TOC sidebar for smaller screens.
 
+<img src="/assets/sc1.png" alt="darkMode ScreenShot" title="Dark Mode ScreenShot"/>
+<img src="/assets/sc2.png" alt="@media (max-width: 900px) - ScreenShot" title="@media (max-width: 900px) - screenshot"/>
+<img src="/assets/sc3.png" alt="light screenshot" title="Light Mode ScreenShot"/>
+
 ## Installation
 
 ### Pre-requisites
@@ -28,14 +32,21 @@ Now, Add the CSS and JavaScript files to your Docsify site:
 
 Copy from
 
-- [toc-top.css](https://github.com/avinash-027/docsify-toc-gotop/blob/main/lib/min/toc-top.1.css)
-- [toc-top.js](https://github.com/avinash-027/docsify-toc-gotop/blob/main/lib/min/toc-top.1.js)
+- [toc-top.css](https://github.com/avinash-027/docsify-toc-gotop/blob/main/lib/toc-top.css)
+- [toc-top.js](https://github.com/avinash-027/docsify-toc-gotop/blob/main/lib/toc-top.js)
 
 ```html
+<!-- Font Awesome for icons (Mandatory)-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <!-- Include CSS & JS files --> 
 <link rel="stylesheet" href="toc-top.css" /> 
 <script src="toc-top.js"></script>
 ```
+
+- Migrating from GitHub to jsDelivr: [jsdelivr.com/github](https://www.jsdelivr.com/github)
+- Convert GitHub links to Statically CDN links: [statically.io/convert](https://statically.io/convert/)
 
 ## Usage
 
@@ -51,8 +62,10 @@ Configure the TOC plugin via the global `$docsify` object before Docsify initial
       tocMaxLevel: 6,
       // Headers to ignore
       ignoreHeaders: ["<!-- {docsify-ignore} -->", "<!-- {docsify-ignore-all} -->"],
-      // Hide TOC if the number of matched headings is less than or equal to this
-      // min headings to show TOC, default 1 (hide if only 1)
+      // Only display the Table of Contents if there are more than this number of headings.
+      // If a page has only one heading, the TOC will remain hidden.
+      // This setting is especially useful for cover pages with minimal headings.
+      // default is 1 (hide if only 1)
       noTocIfHeadingsFoundIs: 1
     }
   };
